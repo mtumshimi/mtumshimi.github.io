@@ -1,0 +1,23 @@
+<form onsubmit="sendToWhatsApp(); return false;">
+  <input type="text" id="jina" placeholder="Jina lako" required />
+  <input type="text" id="namba" placeholder="Namba yako (hiari)" />
+  <textarea id="ombi" rows="4" placeholder="Ombi la maombi..." required></textarea>
+  <button class="btn" type="submit">Tuma</button>
+</form>
+
+<script>
+function sendToWhatsApp() {
+  var jina = document.getElementById("jina").value;
+  var namba = document.getElementById("namba").value;
+  var ombi = document.getElementById("ombi").value;
+
+  var message = "Ombi la Maombi:%0A%0A"
+              + "Jina: " + jina + "%0A"
+              + "Namba: " + namba + "%0A"
+              + "Ujumbe: " + ombi;
+
+  var phoneNumber = "15151234567"; // 🔥 WEKA NAMBA YAKO HAPA
+
+  window.open("https://wa.me/" + phoneNumber + "?text=" + message, "_blank");
+}
+</script>
