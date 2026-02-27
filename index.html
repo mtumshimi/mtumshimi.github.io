@@ -52,6 +52,7 @@
     .btn:active{ transform:scale(0.99); }
 
     #message{ margin-top:10px; font-weight:bold; }
+    #memberArea{ display:none; margin-top:20px; }
 
     footer{
       background:#1f2a44;
@@ -85,7 +86,7 @@
     <h2>Jiunge Nami</h2>
     <p>Jiunge kwa Email/Password ili upate sehemu ya ndani (members).</p>
 
-    <input class="input" type="email" id="email" placeholder="Email" />
+    <input class="input" type="email" id="email" placeholder="Email (mf: test@gmail.com)" />
     <br />
     <input class="input" type="password" id="password" placeholder="Password (angalau 6)" />
     <br />
@@ -96,7 +97,7 @@
 
     <p id="message"></p>
 
-    <div id="memberArea" style="display:none; margin-top:20px;">
+    <div id="memberArea">
       <h3>Karibu Member ✅</h3>
       <p>Hii ni sehemu ya ndani kwa members tu. (Baadaye tutaweka mafundisho/video hapa.)</p>
     </div>
@@ -106,13 +107,14 @@
     © 2026 Huduma ya Mtumishi Moses
   </footer>
 
-  <!-- Firebase -->
+  <!-- ✅ Firebase (COMPAT) — hii ndiyo sahihi kwa GitHub Pages -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
   <script>
+    // ✅ BADILISHA HII API KEY PEKEE: weka ile uliyopata kwenye Firebase "firebaseConfig"
     const firebaseConfig = {
-      apiKey: "AIzaSyCGUwmR7ZEaJm6DwTFhHU6tWkMo_6tKWzU",
+      apiKey:  "AIzaSyCGUwmR7ZEaJm6DwTFhHU6tWkMo_6tKWzU",
       authDomain: "moses-by-mz.firebaseapp.com",
       projectId: "moses-by-mz",
       storageBucket: "moses-by-mz.firebasestorage.app",
@@ -123,7 +125,9 @@
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
-    function showMsg(t){ document.getElementById("message").innerText = t; }
+    function showMsg(t){
+      document.getElementById("message").innerText = t;
+    }
 
     function signUp() {
       const email = document.getElementById("email").value.trim();
@@ -131,7 +135,7 @@
 
       auth.createUserWithEmailAndPassword(email, password)
         .then(() => showMsg("Umejiunga vizuri ✅"))
-        .catch(err => showMsg(err.message));
+        .catch(err => showMsg("Firebase: " + err.message));
     }
 
     function logIn() {
@@ -140,13 +144,13 @@
 
       auth.signInWithEmailAndPassword(email, password)
         .then(() => showMsg("Umeingia ✅"))
-        .catch(err => showMsg(err.message));
+        .catch(err => showMsg("Firebase: " + err.message));
     }
 
     function logOut() {
       auth.signOut()
         .then(() => showMsg("Umetoka ✅"))
-        .catch(err => showMsg(err.message));
+        .catch(err => showMsg("Firebase: " + err.message));
     }
 
     auth.onAuthStateChanged(user => {
