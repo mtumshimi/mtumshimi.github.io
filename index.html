@@ -1,112 +1,158 @@
-
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Huduma ya Mtumishi Moses</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huduma ya Mtumishi Moses</title>
 
-<style>
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  text-align:center;
-  background:#f4f4f4;
-}
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      text-align:center;
+      background:#f4f4f4;
+    }
+    header{
+      background:#1f2a44;
+      color:white;
+      padding:60px 20px;
+    }
+    h1{ font-size:40px; margin:0; }
+    .verse{ margin-top:12px; font-size:16px; opacity:0.95; }
 
-header{
-  background:#1f2a44;
-  color:white;
-  padding:60px 20px;
-}
+    .section{
+      padding:40px 20px;
+      background:white;
+      margin:20px auto;
+      border-radius:10px;
+      max-width:900px;
+      box-sizing:border-box;
+    }
+    .section h2{ margin-top:0; }
 
-h1{
-  font-size:40px;
-}
+    .input{
+      padding:10px;
+      margin:6px;
+      width:260px;
+      max-width:90%;
+      border:1px solid #ccc;
+      border-radius:8px;
+      box-sizing:border-box;
+    }
+    .btn{
+      padding:10px 18px;
+      margin:6px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      background:#1f2a44;
+      color:white;
+      font-weight:bold;
+    }
+    .btn:active{ transform:scale(0.99); }
 
-.section{
-  padding:40px 20px;
-  background:white;
-  margin:20px;
-  border-radius:10px;
-}
+    #message{ margin-top:10px; font-weight:bold; }
 
-footer{
-  background:#1f2a44;
-  color:white;
-  padding:15px;
-}
-</style>
+    footer{
+      background:#1f2a44;
+      color:white;
+      padding:18px 10px;
+      margin-top:30px;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Huduma ya Mtumishi Moses</h1>
-  <p>"Neno lako ni taa ya miguu yangu." – Zaburi 119:105</p>
-</header>
+  <header>
+    <h1>Huduma ya Mtumishi Moses</h1>
+    <div class="verse">"Neno lako ni taa ya miguu yangu." — Zaburi 119:105</div>
+  </header>
 
-<div class="section">
-  <h2>Kuhusu Mimi</h2>
-  <p>
-  Mimi ni Mtumishi Moses, mtumishi wa Injili ya Yesu Kristo niliyeitwa kuhubiri
-  Neno la Mungu, kuombea watu, na kuleta tumaini kwa waliovunjika moyo.
-  </p>
+  <div class="section">
+    <h2>Kuhusu Mimi</h2>
+    <p>
+      Mimi ni Mtumishi Moses, mtumishi wa Injili ya Yesu Kristo niliyeitwa kuhubiri
+      Neno la Mungu, kuombea watu, na kuleta tumaini kwa waliovunjika moyo.
+    </p>
+    <p>
+      Lengo langu ni kuleta watu karibu na Mungu kupitia mafundisho ya Biblia,
+      maombi, na upendo wa Kristo.
+    </p>
+  </div>
 
-  <p>
-  Lengo langu ni kuleta watu karibu na Mungu kupitia mafundisho ya Biblia,
-  maombi, na upendo wa Kristo.
-  </p>
-</div>
+  <div class="section">
+    <h2>Jiunge Nami</h2>
+    <p>Jiunge kwa Email/Password ili upate sehemu ya ndani (members).</p>
 
-<footer>
-© 2026 Huduma ya Mtumishi Moses
-</footer>
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <input class="input" type="email" id="email" placeholder="Email" />
+    <br />
+    <input class="input" type="password" id="password" placeholder="Password (angalau 6)" />
+    <br />
 
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyCGUwmR7ZEaJm6DwTFhHU6tWkMo_6tKWzU",
-    authDomain: "moses-by-mz.firebaseapp.com",
-    projectId: "moses-by-mz",
-    storageBucket: "moses-by-mz.firebasestorage.app",
-    messagingSenderId: "733526366482",
-    appId: "1:733526366482:web:556ed9d9f6bc4e1594bbcb"
-  };
+    <button class="btn" onclick="signUp()">Sign Up</button>
+    <button class="btn" onclick="logIn()">Login</button>
+    <button class="btn" onclick="logOut()">Logout</button>
 
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
+    <p id="message"></p>
 
-  function signUp() {
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+    <div id="memberArea" style="display:none; margin-top:20px;">
+      <h3>Karibu Member ✅</h3>
+      <p>Hii ni sehemu ya ndani kwa members tu. (Baadaye tutaweka mafundisho/video hapa.)</p>
+    </div>
+  </div>
 
-    auth.createUserWithEmailAndPassword(email, password)
-      .then(() => document.getElementById("message").innerText = "Umejiunga vizuri ✅")
-      .catch(error => document.getElementById("message").innerText = error.message);
-  }
+  <footer>
+    © 2026 Huduma ya Mtumishi Moses
+  </footer>
 
-  function logIn() {
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
-    auth.signInWithEmailAndPassword(email, password)
-      .then(() => document.getElementById("message").innerText = "Umeingia ✅")
-      .catch(error => document.getElementById("message").innerText = error.message);
-  }
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCGUwmR7ZEaJm6DwTFhHU6tWkMo_6tKWzU",
+      authDomain: "moses-by-mz.firebaseapp.com",
+      projectId: "moses-by-mz",
+      storageBucket: "moses-by-mz.firebasestorage.app",
+      messagingSenderId: "733526366482",
+      appId: "1:733526366482:web:556ed9d9f6bc4e1594bbcb"
+    };
 
-  function logOut() {
-    auth.signOut().then(() => {
-      document.getElementById("message").innerText = "Umetoka ✅";
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function showMsg(t){ document.getElementById("message").innerText = t; }
+
+    function signUp() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(() => showMsg("Umejiunga vizuri ✅"))
+        .catch(err => showMsg(err.message));
+    }
+
+    function logIn() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => showMsg("Umeingia ✅"))
+        .catch(err => showMsg(err.message));
+    }
+
+    function logOut() {
+      auth.signOut()
+        .then(() => showMsg("Umetoka ✅"))
+        .catch(err => showMsg(err.message));
+    }
+
+    auth.onAuthStateChanged(user => {
+      document.getElementById("memberArea").style.display = user ? "block" : "none";
     });
-  }
+  </script>
 
-  auth.onAuthStateChanged(user => {
-    document.getElementById("memberArea").style.display = user ? "block" : "none";
-  });
-</script>
 </body>
 </html>
-
