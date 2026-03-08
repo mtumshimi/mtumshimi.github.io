@@ -1,0 +1,293 @@
+export default function ChurchApp() {
+
+  const sermons = [
+    { title: 'Tembea kwa Imani', pastor: 'Mchungaji Mkuu', day: 'Jumapili' },
+    { title: 'Nguvu ya Maombi', pastor: 'Mchungaji Msaidizi', day: 'Jumatano' },
+    { title: 'Upendo wa Mungu', pastor: 'Mwalimu wa Biblia', day: 'Ijumaa' }
+  ];
+
+  const services = [
+    { name: 'Ibada ya Jumapili', time: 'Saa 3:00 Asubuhi' },
+    { name: 'Sunday School', time: 'Saa 2:00 Asubuhi' },
+    { name: 'Maombi ya Katikati ya Wiki', time: 'Jumatano Saa 11:00 Jioni' },
+    { name: 'Ibada ya Vijana', time: 'Ijumaa Saa 10:00 Jioni' }
+  ];
+
+  const ministries = [
+    'Huduma ya Vijana',
+    'Huduma ya Wanawake',
+    'Huduma ya Wanaume',
+    'Kwaya ya Kanisa',
+    'Sunday School',
+    'Huduma ya Watoto'
+  ];
+
+  const events = [
+    { title: 'Mkutano wa Injili', date: '12 Julai' },
+    { title: 'Semina ya Ndoa', date: '20 Julai' },
+    { title: 'Kongamano la Vijana', date: '5 Agosti' }
+  ];
+
+  const choirSongs = [
+    'Nitaimba Sifa za Bwana',
+    'Hakuna Kama Wewe',
+    'Yesu Ni Mwokozi'
+  ];
+
+  const announcements = [
+    'Mkutano wa vijana wiki ijayo.',
+    'Kwaya ina mazoezi Jumamosi saa 9:00 alasiri.',
+    'Mkutano wa maombi maalum Jumapili jioni.'
+  ];
+
+  const bibleBooks = [
+    'Mwanzo','Kutoka','Walawi','Hesabu','Kumbukumbu la Torati','Yoshua','Waamuzi','Ruthu','1 Samweli','2 Samweli'
+  ];
+
+  return (
+
+    <div className="min-h-screen bg-slate-50 text-slate-900">
+
+      <header className="bg-white border-b border-slate-200">
+        <div className="max-w-6xl mx-auto px-4 py-5 flex justify-between items-center">
+
+          <div>
+            <h1 className="text-2xl font-bold">Kanisa Community App</h1>
+            <p className="text-sm text-slate-600">App kamili ya kanisa</p>
+          </div>
+
+          <button className="bg-slate-900 text-white px-4 py-2 rounded-xl">
+            Jiunge
+          </button>
+
+        </div>
+      </header>
+
+      <main className="max-w-6xl mx-auto px-4">
+
+        <section className="py-16">
+          <h2 className="text-4xl font-bold">Karibu Kanisani</h2>
+          <p className="mt-4 text-slate-600 max-w-xl">
+            Hii ni app kamili ya kanisa yenye mahubiri, Biblia, live stream,
+            sadaka, maombi, matukio, kwaya, notifications, na account za washirika.
+          </p>
+        </section>
+
+        <section className="py-12">
+          <h3 className="text-2xl font-bold mb-6">YouTube Live Stream</h3>
+
+          <div className="bg-black text-white rounded-xl p-10 text-center">
+            Weka hapa YouTube Live ya ibada
+          </div>
+
+        </section>
+
+        <section className="py-12">
+
+          <h3 className="text-2xl font-bold mb-6">Ratiba za Ibada</h3>
+
+          <div className="grid md:grid-cols-2 gap-4">
+
+            {services.map((s) => (
+
+              <div key={s.name} className="bg-white border p-4 rounded-xl">
+                <p className="font-semibold">{s.name}</p>
+                <p className="text-sm text-slate-600">{s.time}</p>
+              </div>
+
+            ))}
+
+          </div>
+
+        </section>
+
+        <section className="py-12">
+
+          <h3 className="text-2xl font-bold mb-6">Mahubiri</h3>
+
+          <div className="grid md:grid-cols-3 gap-4">
+
+            {sermons.map((s) => (
+
+              <div key={s.title} className="bg-white border p-4 rounded-xl">
+                <p className="font-semibold">{s.title}</p>
+                <p className="text-sm">{s.pastor}</p>
+                <p className="text-xs text-slate-500">{s.day}</p>
+              </div>
+
+            ))}
+
+          </div>
+
+        </section>
+
+        <section className="py-12">
+
+          <h3 className="text-2xl font-bold mb-6">Huduma za Kanisa</h3>
+
+          <div className="grid md:grid-cols-3 gap-4">
+
+            {ministries.map((m) => (
+
+              <div key={m} className="bg-white border p-4 rounded-xl">
+                {m}
+              </div>
+
+            ))}
+
+          </div>
+
+        </section>
+
+        <section className="py-12">
+
+          <h3 className="text-2xl font-bold mb-6">Matukio ya Kanisa</h3>
+
+          <div className="grid md:grid-cols-3 gap-4">
+
+            {events.map((e) => (
+
+              <div key={e.title} className="bg-white border p-4 rounded-xl">
+                <p className="font-semibold">{e.title}</p>
+                <p className="text-sm text-slate-600">{e.date}</p>
+              </div>
+
+            ))}
+
+          </div>
+
+        </section>
+
+        <section className="py-12">
+
+          <h3 className="text-2xl font-bold mb-6">Nyimbo za Kwaya</h3>
+
+          <div className="space-y-3">
+
+            {choirSongs.map((song) => (
+
+              <div key={song} className="bg-white border p-4 rounded-xl">
+                {song}
+              </div>
+
+            ))}
+
+          </div>
+
+        </section>
+
+        <section className="py-12">
+
+          <h3 className="text-2xl font-bold mb-6">Biblia Ndani ya App</h3>
+
+          <div className="grid md:grid-cols-3 gap-4">
+
+            {bibleBooks.map((book) => (
+
+              <div key={book} className="bg-white border p-4 rounded-xl">
+                {book}
+              </div>
+
+            ))}
+
+          </div>
+
+        </section>
+
+        <section className="py-12">
+
+          <h3 className="text-2xl font-bold mb-6">Matangazo</h3>
+
+          <div className="space-y-3">
+
+            {announcements.map((a) => (
+
+              <div key={a} className="bg-white border p-4 rounded-xl">
+                {a}
+              </div>
+
+            ))}
+
+          </div>
+
+        </section>
+
+        <section className="py-12">
+
+          <h3 className="text-2xl font-bold mb-6">Notifications</h3>
+
+          <div className="bg-white border p-6 rounded-xl">
+            Washirika watapokea taarifa za:
+            <ul className="list-disc ml-6 mt-3">
+              <li>Ibada mpya</li>
+              <li>Matukio ya kanisa</li>
+              <li>Mahubiri mapya</li>
+              <li>Matangazo muhimu</li>
+            </ul>
+          </div>
+
+        </section>
+
+        <section className="py-12 grid md:grid-cols-2 gap-6">
+
+          <div className="bg-white border p-6 rounded-xl">
+
+            <h3 className="text-xl font-bold mb-4">Omba Maombi</h3>
+
+            <input className="w-full border rounded-lg px-3 py-2 mb-3" placeholder="Jina lako" />
+
+            <input className="w-full border rounded-lg px-3 py-2 mb-3" placeholder="Simu au Email" />
+
+            <textarea className="w-full border rounded-lg px-3 py-2 mb-3" placeholder="Andika ombi la maombi" />
+
+            <button className="bg-slate-900 text-white px-4 py-2 rounded-lg">
+              Tuma
+            </button>
+
+          </div>
+
+          <div className="bg-white border p-6 rounded-xl">
+
+            <h3 className="text-xl font-bold mb-4">Sadaka</h3>
+
+            <p>Mobile Money: 07XX XXX XXX</p>
+            <p>Bank: Kanisa Community Bank</p>
+            <p>Account: 123456789</p>
+
+            <h4 className="font-semibold mt-4">Mawasiliano</h4>
+
+            <p>Simu: 07XX XXX XXX</p>
+            <p>Email: info@kanisa.org</p>
+
+          </div>
+
+        </section>
+
+        <section className="py-12">
+
+          <h3 className="text-2xl font-bold mb-6">Account ya Mshirika</h3>
+
+          <div className="bg-white border p-6 rounded-xl max-w-md">
+
+            <input className="w-full border rounded-lg px-3 py-2 mb-3" placeholder="Email" />
+
+            <input className="w-full border rounded-lg px-3 py-2 mb-3" placeholder="Password" />
+
+            <button className="bg-slate-900 text-white px-4 py-2 rounded-lg w-full">
+              Login
+            </button>
+
+          </div>
+
+        </section>
+
+      </main>
+
+      <footer className="text-center text-sm text-slate-500 py-8">
+        Kanisa App • Mfumo kamili wa kanisa (Live, Biblia, Mahubiri, Ibada, Matukio, Sadaka)
+      </footer>
+
+    </div>
+
+  );
+}
